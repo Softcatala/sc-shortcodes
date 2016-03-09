@@ -3,6 +3,9 @@
   "type": "wordpress-plugin",
   "description": "Plugin to allow creating shortcodes that are processed before auto-formatting functions",
   "license": "GPLv3",
+  "require": {
+	"php" : ">=5.4"
+  },
   "require-dev": {
         "yoast/yoastcs": "dev-master"
     },

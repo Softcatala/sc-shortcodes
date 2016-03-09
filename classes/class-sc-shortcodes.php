@@ -11,12 +11,12 @@ class SC_Shortcodes {
 	/**
 	 * @var array Llista de shortcodes registrats.
 	 */
-	private $shortcodes = array();
+	private $shortcodes = [];
 
 	/**
 	 * @var array Llista de shortcodes exempts de wptexturize.
 	 */
-	private $exempt = array();
+	private $exempt = [];
 
 	/**
 	 * Registra un shortcode.

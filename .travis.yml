@@ -27,8 +27,6 @@ matrix:
       env: WP_VERSION=4.4
     - php: 5.4
       env: WP_VERSION=4.4
-    - php: 5.3
-      env: WP_VERSION=4.4
     - php: hhvm
       env: WP_VERSION=4.4
 
