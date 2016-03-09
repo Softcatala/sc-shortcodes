@@ -1,0 +1,27 @@
+{
+  "name": "softcatala/sc-shortcodes",
+  "type": "wordpress-plugin",
+  "description": "Plugin to allow creating shortcodes that are processed before auto-formatting functions",
+  "license": "GPLv3",
+  "require-dev": {
+        "yoast/yoastcs": "dev-master"
+    },
+    "scripts": {
+		"config-cs": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
+			"\"vendor/bin/phpcs\" --config-set default_standard Yoast"
+		],
+		"phpmd" : "vendor/bin/phpmd . text vendor/yoast/yoastcs/phpmd.xml --exclude 'vendor/'",
+		"phpcbf" : "vendor/bin/phpcbf .",
+		"phpcs" : "vendor/bin/phpcs --extensions=php .  ",
+		"code" : [
+			"@config-cs",
+			"@phpcs",
+			"@phpmd"
+		]
+    },
+     "archive": {
+        "exclude": ["/tests/", "/bin/", "/phpunit.xml"]
+    }
+}
+
