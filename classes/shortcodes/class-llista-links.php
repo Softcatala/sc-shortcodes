@@ -30,7 +30,7 @@ class SC_Shortcodes_LinkList {
 
 		$items = preg_split( '/\R/', $content, -1, PREG_SPLIT_NO_EMPTY );
 
-		$columns_count = ceil ( count ( $items ) / 2 );
+		$columns_count = ceil( count( $items ) / 2 );
 
 		$html = '<div class="row"><ul class="llista-check col-sm-6">';
 		foreach ( $items as $key => $item ) {
