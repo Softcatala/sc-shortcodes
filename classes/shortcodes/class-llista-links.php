@@ -34,7 +34,7 @@ class SC_Shortcodes_LinkList {
 
 		$html = '<div class="row"><ul class="llista-check col-sm-6">';
 		foreach ( $items as $key => $item ) {
-			if ( $key == ($total_items / 2) ) {
+			if ( $key == intval($total_items/2 + 1) ) {
 				$html .= '</ul><ul class="llista-check col-sm-6">';
 			}
 
