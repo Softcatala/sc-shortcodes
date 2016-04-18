@@ -1,5 +1,8 @@
 # sc-shortcodes
 
+[![Build Status](https://travis-ci.org/Softcatala/sc-shortcodes.svg?branch=master)](https://travis-ci.org/Softcatala/sc-shortcodes)
+[![Stable Version](https://poser.pugx.org/softcatala/sc-shortcodes/v/stable)](https://packagist.org/packages/softcatala/sc-shortcodes)
+
 This WordPress extension adds the possibility to create complex lists based on specific styles. Each type of list has a specific name and properties.
 
 ##List types
