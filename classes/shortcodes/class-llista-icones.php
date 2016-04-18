@@ -57,7 +57,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $color color del shortcode.
 	 * @param string $default classe per defecte.
 	 */
-	private function get_column_css_class ( $color, $default = '' ) {
+	private function get_column_css_class( $color, $default = '' ) {
 
 		switch ( $color ) {
 			case 'blancgris':
@@ -73,7 +73,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $color color del shortcode.
 	 * @param string $default classe per defecte.
 	 */
-	private function get_item_css_class ( $color, $default = 'thumbnail-blanc' ) {
+	private function get_item_css_class( $color, $default = 'thumbnail-blanc' ) {
 
 		switch ( $color ) {
 			case 'gris':
@@ -94,7 +94,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $css classe CSS per a cada element.
 	 * @return type HTML renderitzat.
 	 */
-	private function get_icon_list_columns ( $items, $css ) {
+	private function get_icon_list_columns( $items, $css ) {
 		$column0 = '';
 		$column1 = '';
 		$total_items = 0;
@@ -117,32 +117,49 @@ class SC_Shortcodes_IconList {
 	 * @param string $css classe CSS per a mostrar el color de la cel·la.
 	 * @return string HTML renderitzat per a un element de la llista.
 	 */
-	private function get_icon_list_item ( $item, $css ) {
+	private function get_icon_list_item( $item, $css ) {
 		$parts = explode( '|', $item );
 
-		$icon = $this->get_icon( $parts[0] );
-		$heading = $this->get_heading( $parts[1] );
-		$body = $this->get_body( $parts[2] );
+		if ( $this->validate( $parts ) ) {
+			$icon = $this->get_icon( $parts[0] );
+			$heading = $this->get_heading( $parts[1] );
+			$body = $this->get_body( $parts[2] );
 
-		$html = '<div class="thumbnail ' . $css . '">';
+			$html = '<div class="thumbnail ' . $css . '">';
 
-		$html .= '<i class="fa fa-' . $icon . '"></i>';
+			$html .= '<i class="fa fa-' . $icon . '"></i>';
 
-		$html .= '<div class="caption">';
+			$html .= '<div class="caption">';
 
-		if ( ! empty( $heading ) ) {
-			$html .= '<h3>' . $heading . '</h3>';
+			if ( ! empty( $heading ) ) {
+				$html .= '<h3>' . $heading . '</h3>';
+			}
+
+			if ( ! empty( $body ) ) {
+				$html .= '<p>' . $body . '</p>';
+			}
+
+			$html .= '</div>';
+
+			$html .= '</div>';
+
 		}
-
-		if ( ! empty( $body ) ) {
-			$html .= '<p>' . $body . '</p>';
-		}
-
-		$html .= '</div>';
-
-		$html .= '</div>';
-
+		else {
+			$html = '<div class="bg-danger">';
+			$html .= 'L\'element de la llista no conté 3 parts';
+			$html .= '<pre>' . $item . '</pre>';
+			$html .= '</div>';
+		}//end if
 		return $html;
+	}
+
+	/**
+	 * Comprova si els elements tenen la forma adequada
+	 *
+	 * @param array $elements Elements a validar.
+	 */
+	private function validate( $elements ) {
+		return is_array( $elements ) && count( $elements ) == 3;
 	}
 
 	/**
@@ -151,7 +168,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $icon icona a utilitzar.
 	 * @return string
 	 */
-	private function get_icon ( $icon ) {
+	private function get_icon( $icon ) {
 		return ( isset( $icon ) && ! empty( $icon )) ? $icon : 'circle';
 	}
 
@@ -161,7 +178,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $heading capçalera a utilitzar.
 	 * @return string
 	 */
-	private function get_heading ( $heading ) {
+	private function get_heading( $heading ) {
 		return ( isset( $heading ) && ! empty( $heading )) ? $heading : '';
 	}
 
@@ -171,7 +188,7 @@ class SC_Shortcodes_IconList {
 	 * @param string $body cos a utilitzar.
 	 * @return string
 	 */
-	private function get_body ( $body ) {
+	private function get_body( $body ) {
 		return ( isset( $body ) && ! empty( $body )) ? $body : '';
 	}
 }

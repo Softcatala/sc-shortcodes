@@ -53,7 +53,7 @@ class SC_Shortcodes {
 		foreach ( $this->shortcodes as $shortcode => $func ) {
 			add_shortcode( $shortcode, array(
 				$this,
-				function($atts, $content) {
+				function( $atts, $content ) {
 					return $content;
 				},
 			));

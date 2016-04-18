@@ -14,7 +14,7 @@
 			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
 			"\"vendor/bin/phpcs\" --config-set default_standard Yoast"
 		],
-		"phpmd" : "vendor/bin/phpmd . text vendor/yoast/yoastcs/phpmd.xml --exclude 'vendor/'",
+		"phpmd" : "vendor/bin/phpmd . text ./phpmd.xml --exclude 'vendor/'",
 		"phpcbf" : "vendor/bin/phpcbf .",
 		"phpcs" : "vendor/bin/phpcs --extensions=php .  ",
 		"code" : [

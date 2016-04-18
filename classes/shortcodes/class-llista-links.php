@@ -39,10 +39,28 @@ class SC_Shortcodes_LinkList {
 			}
 
 			$values = explode( '|', $item );
-			$html .= '<li><a href="'.$values[1].'"><i class="fa fa-check"></i><span>'.$values[0].'</span></a></li>';
+
+			if ( $this->validate( $values ) ) {
+				$html .= '<li><a href="'.$values[1].'"><i class="fa fa-check"></i><span>'.$values[0].'</span></a></li>';
+			}
+			else {
+				$html .= '<li><div class="bg-danger">';
+				$html .= 'L\'element de la llista no conté 2 parts';
+				$html .= '<pre>' . $item . '</pre>';
+				$html .= '</div></li>';
+			}
 		}
 		$html .= '</ul></div>';
 
 		return $html;
+	}
+
+	/**
+	 * Comprova si els elements tenen la forma adequada
+	 *
+	 * @param array $elements Elements a validar.
+	 */
+	private function validate( $elements ) {
+		return is_array( $elements ) && count( $elements ) == 2;
 	}
 }

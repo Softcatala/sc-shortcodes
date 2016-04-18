@@ -16,6 +16,15 @@ class TestLlistes extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( '', $resultat );
 	}
 
+	function test_malformed_content_returns_error() {
+
+		$llistes = new SC_Shortcodes_IconList();
+
+		$resultat = $llistes->shortcode( array(), 'a|b' );
+
+		$this->assertContains( 'bg-danger', $resultat );
+	}
+
 	function test_color_blanc_returns_blanc() {
 
 		$color = 'blanc';
